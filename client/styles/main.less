@@ -1,0 +1,83 @@
+html, body {
+  height: 100%;
+}
+
+body {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+// FIX FIREFOX flexbox
+@-moz-document url-prefix() {
+ #flexible-content{
+      flex: 1;
+    }
+}
+.main_body {
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+
+}
+
+md-content {
+  background: white;
+  //border: 1px solid #e1e1e1;
+}
+// anything with 'class="gray-bg"'
+.gray-bg {
+  background: #f6f6f6;
+}
+
+// md-whiteframe-z*
+// set color to white
+div[class*='md-whiteframe-z'] {
+  background: #FFFFFF;
+  margin: 18px;
+}
+
+// ALL BUTTONS
+.md-button {
+  text-transform: none;
+}
+
+.md-tab {
+  background: white;
+  color: #010101;
+  text-transform: none;
+}
+
+md-content md-tabs {
+  background: #f6f6f6;
+  border: 1px solid #e1e1e1; }
+  md-content md-tabs md-tab-content {
+    background: white; }
+  md-content md-tabs md-tabs-wrapper {
+    background: white; }
+    md-content h1:first-child {
+      margin-top: 0; }
+
+
+// CARDS
+md-card.md-dark {
+  background-color: #2F2F2F;
+  color: #F4F4F4;
+}
+
+// TOAST
+md-toast.md-success-toast-theme {
+    background-color: lightgreen;//green;
+}
+md-toast.md-error-toast-theme {
+    background-color: red;
+}
+md-toast.md-info-toast-theme {
+    background-color: lightblue;
+}
+
+
+@import "navbar.import.less";
+@import "sidemenu.import.less";
+
+//@import "toast-themes.import.less";

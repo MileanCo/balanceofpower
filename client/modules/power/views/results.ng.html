@@ -1,0 +1,48 @@
+<div layout="column" ng-cloak>
+  <h2 flex class="md-display-1">Results </h2>
+  <div flex class="md-padding md-whiteframe-z2">
+
+    <div flex ng-show="loading">
+        <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+    </div>
+
+    <canvas flex id="base" class="chart-base" chart-type="pie.type"
+      chart-data="pie.data" chart-labels="pie.labels" chart-legend="true"
+      height="100" >
+    </canvas>
+    <md-button flex ng-click="toggle()" class="md-raised">Toggle Chart</md-button>
+    <md-button flex ng-click="randomizeData()" class="md-raised">Analyze New Event</md-button>
+  </div>
+</div>
+<br/>
+<div layout="column" ng-cloak>
+  <h1 flex class="md-display-1">Data Table</h1>
+  <div flex ng-show="loading">
+      <md-progress-circular md-mode="indeterminate"></md-progress-circular>
+  </div>
+
+  <div flex class="md-padding md-whiteframe-z2" ng-hide="loading">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th ng-repeat="header in headers">
+            {{header}}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="x in countries">
+          <td>{{ x.Faction }} </td>
+          <td>{{ x.Resources }}</td>
+          <td>{{ x.Military }}</td>
+          <td>{{ x.Population}}</td>
+          <td>{{ x.AllyStrength}}</td>
+          <td>{{ x.PowerSum}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div flex>
+    <md-button flex class="md-raised" ui-sref="core.power.start">Back </md-button>
+  </div>
+</div>
