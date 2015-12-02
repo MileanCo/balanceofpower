@@ -19,10 +19,11 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
       type : "Power Sum",
     }
     // Chart
-    $scope.pie = {};
-    $scope.pie.labels = [];
-    $scope.pie.data = [];
-
+    $scope.chart = {};
+    $scope.chart.labels = [];
+    $scope.chart.data = [];
+    $scope.chart.series = [];
+    
     // Subscriptions (gets data to/from Database)
     self.subscription = $meteor.subscribe('countries');
     self.subscription.then(function() {
@@ -61,16 +62,17 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
     $scope.updateCountries = function (countries) {
       console.log("update countries!");
       // PIE CHART
-      $scope.pie = {};
-      $scope.pie.labels = [];
-      $scope.pie.data = [];
-      $scope.pie.type = 'Pie';
+      $scope.chart = {};
+      $scope.chart.labels = [];
+      $scope.chart.data = [];
+      $scope.chart.type = 'Pie';
+      $scope.chart.series = [$scope.data.type];
 
       for (var i = 0; i < countries.length; i++) {
           var c = countries[i];
           // insert data
           if (c.PowerSum) {
-            $scope.pie.labels.push(c.Faction);
+            $scope.chart.labels.push(c.Faction);
 
             // format variables
             c.PowerSum = self._format_variable (c.PowerSum);
@@ -80,7 +82,8 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
             c.AllyStrength = self._format_variable (c.AllyStrength);
 
             // add to data array
-            $scope.pie.data.push(self.getDataTypeToDisplay(c));
+            $scope.chart.data.push(self.getDataTypeToDisplay(c));
+            //$scope.chart.series.push(c.)
           }
       }
       // Set countries to available within scope
@@ -121,7 +124,7 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
             new_data.push(self.getDataTypeToDisplay(c));
           }
       }
-      $scope.pie.data = new_data;
+      $scope.chart.data = new_data;
     }
     // Format value so it's nice to display
     self._format_variable = function (v) {
@@ -152,7 +155,7 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
     }
     // Toggle pie chart to other type
     $scope.toggle = function () {
-      $scope.pie.type = $scope.pie.type === 'Pie' ?
+      $scope.chart.type = $scope.chart.type === 'Pie' ?
         'PolarArea' : 'Pie';
     };
 
