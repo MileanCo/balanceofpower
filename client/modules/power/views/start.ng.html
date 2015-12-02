@@ -10,22 +10,30 @@
       </fieldset>
 
       <fieldset class="standard" layout="column" >
-        <legend>You</legend>
+        <legend>News Sources to Crawl</legend>
+        <div ng-repeat="ns in news_sources">
+          <md-checkbox ng-model="ns.use" >{{ns.name}}</md-checkbox>
+        </div>
+      </fieldset>
+
+      <fieldset class="standard" layout="column" >
+        <legend>Data</legend>
         <md-input-container flex >
-          <label>Your Name</label>
+          <label>Comments</label>
           <input ng-model="name">
         </md-input-container>
         <br/>
         <md-input-container flex>
-          <label>News Source to Crawl</label>
-          <md-select ng-model="news">
-            <md-option value="CNN" selected>CNN</md-option>
-            <md-option value="MSNBC">MSNBC</md-option>
-            <md-option value="ABC">ABC News</md-option>
-            <md-option value="ALJ">Al Jazeera</md-option>
-            <md-option value="WSJ">Wall Street Journal</md-option>
+          <label>Data to Plot </label>
+          <md-select ng-model="data.type">
+            <md-option value="Military"> Military</md-option>
+            <md-option value="Resources"> Resources</md-option>
+            <md-option value="Population"> Population</md-option>
+            <md-option value="Ally Strength"> Ally Strength</md-option>
+            <md-option value="Power Sum"> Power Sum</md-option>
           </md-select>
         </md-input-container>
+
       </fieldset>
 
     </div>

@@ -13,6 +13,9 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
     $scope.countries = [];
     // List for Checkboxes of countries to use
     $scope.countriesInvolved = [];
+    $scope.data = {
+      type : "Power Sum",
+    }
 
     // Subscriptions
     var subscription = $meteor.subscribe('countries');
@@ -27,7 +30,21 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
           $scope.countriesInvolved.push({use:false, name: c.Faction});
       }
 
+      $scope.countriesInvolved.push({use:false, name: 'Jordan'});
+      $scope.countriesInvolved.push({use:false, name: 'Yemen'});
+      $scope.countriesInvolved.push({use:false, name: 'Kuwait'});
+      $scope.countriesInvolved.push({use:false, name: 'Egypt'});
+      $scope.countriesInvolved.push({use:false, name: 'Afghanistan'});
+      $scope.countriesInvolved.push({use:false, name: 'Turkey'});
     });
 
+    $scope.news_sources = [
+      {use:true, name: 'CNN' },
+      {use:false, name: 'MSNBC' },
+      {use:false, name: 'ABC News' },
+      {use:true, name: 'Fox News' },
+      {use:false, name: 'Wall Street Journal' },
+      {use:true, name: 'Al Jazeera' },
+    ];
 
   }]);

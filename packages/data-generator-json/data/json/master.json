@@ -1,11 +1,11 @@
-[	
+[
 
-	{"Faction": "Syria", "AllyStrength": "0.2", "PowerSum": "1.24884318", "Military": "1.724869827", "Resources": "0.649862735", "Population": "3.239364284"},
-	{"Faction": "Saudi Arabia", "AllyStrength": "0.7", "PowerSum": "2.656524344", "Military": "2.295461156", "Resources": "4.480415269", "Population": "2.542153006"},
-	{"Faction": "UAE", "AllyStrength": "0.7", "PowerSum": "1.172560797", "Military": "1.054736039", "Resources": "1.731937527", "Population": "0.910851235"},
-	{"Faction": "Iran", "AllyStrength": "0", "PowerSum": "2.03479469", "Military": "2.119095404", "Resources": "2.747442156", "Population": "3.629238817"},
-	{"Faction": "Iraq", "AllyStrength": "0.4", "PowerSum": "1.524915466", "Military": "1.687099928", "Resources": "1.625604944", "Population": "2.823940112"},
-	{"Faction": "Israel", "AllyStrength": "1", "PowerSum": "2.555208926", "Military": "4.509928428", "Resources": "0.810358579", "Population": "3.081299814"},
-	{"Faction": "ISIS", "AllyStrength": "", "PowerSum": "", "Military": "", "Resources": "", "Population": ""},
-	{"Faction": "Al-Qaeda", "AllyStrength": "", "PowerSum": "", "Military": "", "Resources": "", "Population": ""}
+	{"Faction": "Syria", "AllyStrength": "0.2", "PowerSum": "12.4884318", "Military": "1.724869827", "Resources": "0.6498627349", "Population": "3.239364284"},
+	{"Faction": "Saudi Arabia", "AllyStrength": "0.7", "PowerSum": "26.56524344", "Military": "2.295461156", "Resources": "4.480415269", "Population": "2.542153006"},
+	{"Faction": "UAE", "AllyStrength": "0.7", "PowerSum": "11.72560797", "Military": "1.054736039", "Resources": "1.731937527", "Population": "0.910851235"},
+	{"Faction": "Iran", "AllyStrength": "0.3", "PowerSum": "20.9479469", "Military": "2.119095404", "Resources": "2.747442156", "Population": "3.629238817"},
+	{"Faction": "Iraq", "AllyStrength": "0.4", "PowerSum": "15.24915466", "Military": "1.687099928", "Resources": "1.625604944", "Population": "2.823940112"},
+	{"Faction": "Israel", "AllyStrength": "1", "PowerSum": "25.55208926", "Military": "4.509928428", "Resources": "0.810358579", "Population": "3.081299814"},
+	{"Faction": "ISIS", "AllyStrength": "0.3", "PowerSum": "6.95", "Military": "1.2", "Resources": "0.4", "Population": "0.35"},
+	{"Faction": "Al-Qaeda", "AllyStrength": "0.1", "PowerSum": "3.5", "Military": "0.7", "Resources": "0.1", "Population": "0.2"}
 ]

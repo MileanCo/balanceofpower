@@ -8,15 +8,18 @@
  */
 angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
   .controller('ResultsCtrl', ['$scope', '$rootScope', '$meteor', function ($scope, $rootScope, $meteor) {
-
+    var self = {};
     $scope.loading = true;
-    $scope.headers = ['Country', 'Resources', 'Military', 'Population', 'Ally Strength', 'Power Sum'];
+    $scope.data = {
+      type : "Power Sum",
+    }
 
+    $scope.headers = ['Country', 'Resources', 'Military', 'Population', 'Ally Strength', 'Power Sum'];
     $scope.countries = [];
 
     // Subscriptions
-    var subscription = $meteor.subscribe('countries');
-    subscription.then(function() {
+    self.subscription = $meteor.subscribe('countries');
+    self.subscription.then(function() {
       var countries = $meteor.collection(Countries);
       // Process ALL RECORDS in local DB
       $scope.updateCountries( countries );
@@ -41,18 +44,18 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
             $scope.pie.labels.push(c.Faction);
 
             // format variables
-            c.PowerSum = $scope._format_variable (c.PowerSum);
-            c.Resources = $scope._format_variable (c.Resources);
-            c.Military = $scope._format_variable (c.Military);
-            c.Population = $scope._format_variable (c.Population);
-            c.AllyStrength = $scope._format_variable (c.AllyStrength);
+            c.PowerSum = self._format_variable (c.PowerSum);
+            c.Resources = self._format_variable (c.Resources);
+            c.Military = self._format_variable (c.Military);
+            c.Population = self._format_variable (c.Population);
+            c.AllyStrength = self._format_variable (c.AllyStrength);
 
             // add to data array
             $scope.pie.data.push(c.PowerSum);
           }
       }
-      // Copy this array to new array so we can modify the values in the DOM
-      $scope.countries = countries.slice(0);
+      // Set countries to available within scope
+      $scope.countries = countries;
       $scope.loading=false;
     }
 
@@ -66,10 +69,10 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
           // insert data
           if (c.PowerSum) {
             // format variables
-            //var p = $scope.random_change (c.PowerSum);
-            c.PowerSum = $scope.random_change (c.PowerSum);
-            console.log(c.Faction + 'pwersum:');
-            console.log(c.PowerSum);
+            c.PowerSum = self._random_change(c.PowerSum);
+            c.Resources = self._random_change(c.Resources);
+            c.Military = self._random_change(c.Military);
+            c.Population = self._random_change(c.Population);
 
             // add to data array
             new_data.push(c.PowerSum);
@@ -78,20 +81,29 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
       $scope.pie.data = new_data;
     }
 
-    $scope._format_variable = function (v) {
-      // increase power by 10 for visual effect
-      v = parseFloat(v) * 10.0;
+    self._format_variable = function (v) {
+      // convert to float
+      v = parseFloat(v);// * 10.0;
       v = parseFloat(v.toFixed(2));
       return v;
     }
 
-    $scope.random_change = function (v) {
+    self._random_change= function (v) {
       // increase power by 10 for visual effect
-      var min = -0.017;
-      var max = 0.016;
+      var min = -0.2;
+      var max = 0.2;
+      // If value less than 5, put them back in the game
+      if (v < 6.0) max = max * 2;
+      // if value GREATER than 29, reduce power
+      if (v > 30.0) min = min * 3;
+
       // and the formula is:
-      var random = Math.random() * (max - min + 1) + min;
+      var random = Math.random() * (max - min) + min;
+      console.log("----");
+      console.log(v);
+      console.log(random);
       v = v*(1+random);
+      console.log(v);
       return parseFloat(v.toFixed(2));
     }
 
