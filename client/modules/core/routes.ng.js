@@ -86,7 +86,6 @@ angular.module("app.core").config(function ($urlRouterProvider, $stateProvider, 
       })
       .state('core.power.results', {
         url:'/results',
-        controller: "ResultsCtrl",
         data : { pageTitle: 'Results' },
         templateUrl: 'client/modules/power/views/results.ng.html',
       })

@@ -1,5 +1,5 @@
 <div layout="column" ng-cloak>
-  <h2 flex class="md-display-1">Results - {{data.type}} </h2>
+  <h2 flex class="md-display-1">Results - <b>{{data.type}}</b> </h2>
   <div flex class="md-padding md-whiteframe-z2">
 
     <div flex ng-show="loading">
@@ -11,7 +11,7 @@
       height="100" >
     </canvas>
     <md-button flex ng-click="toggle()" class="md-raised">Toggle Chart</md-button>
-    <md-button flex ng-click="randomizeData()" class="md-raised">Analyze New Event</md-button>
+    <md-button flex ng-click="randomizeData()" class="md-raised"> Simulate News </md-button>
   </div>
 </div>
 <br/>
