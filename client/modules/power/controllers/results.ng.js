@@ -27,6 +27,7 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
 
     // update the chart with new shit
     $scope.updateCountries = function (countries) {
+      console.log("update countries!");
       // PIE CHART
       $scope.pie = {};
       $scope.pie.labels = [];
@@ -50,7 +51,8 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
             $scope.pie.data.push(c.PowerSum);
           }
       }
-      $scope.countries = countries;
+      // Copy this array to new array so we can modify the values in the DOM
+      $scope.countries = countries.slice(0);
       $scope.loading=false;
     }
 
@@ -64,12 +66,13 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
           // insert data
           if (c.PowerSum) {
             // format variables
-            var p = $scope.random_change (c.PowerSum);
+            //var p = $scope.random_change (c.PowerSum);
+            c.PowerSum = $scope.random_change (c.PowerSum);
             console.log(c.Faction + 'pwersum:');
-            console.log(p);
+            console.log(c.PowerSum);
 
             // add to data array
-            new_data.push(p);
+            new_data.push(c.PowerSum);
           }
       }
       $scope.pie.data = new_data;

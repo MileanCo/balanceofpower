@@ -24,7 +24,7 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
       // Make list for Checkboxes (ng-repeat)
       for (var i = 0; i < $scope.countries.length; i++) {
           var c = $scope.countries[i];
-          $scope.countriesInvolved.push({use:true, name: c.Faction});
+          $scope.countriesInvolved.push({use:false, name: c.Faction});
       }
 
     });
