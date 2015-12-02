@@ -1,32 +1,34 @@
 <div layout="column" layout-align="start start" class="md-padding md-whiteframe-z2">
     <p> Enter your information to determine the balance of power in the Middle East! </p>
 
-    <md-content layout="column" layout-padding flex >
-      <md-input-container flex >
-        <label>Your Name</label>
-        <input ng-model="name">
-      </md-input-container>
-
-
-      <fieldset class="standard">
+    <div flex layout="row" layout-align="start start" layout-padding >
+      <fieldset class="standard" layout="column" >
         <legend>Countries involved</legend>
-        <div ng-repeat="c in countries">
-          <md-checkbox ng-checked="true">{{c.Faction}}</md-checkbox>
+        <div ng-repeat="c in countriesInvolved">
+          <md-checkbox ng-model="c.use" >{{c.name}}</md-checkbox>
         </div>
       </fieldset>
 
+      <fieldset class="standard" layout="column" >
+        <legend>You</legend>
+        <md-input-container flex >
+          <label>Your Name</label>
+          <input ng-model="name">
+        </md-input-container>
+        <br/>
+        <md-input-container flex>
+          <label>News Source to Crawl</label>
+          <md-select ng-model="news">
+            <md-option value="CNN" selected>CNN</md-option>
+            <md-option value="MSNBC">MSNBC</md-option>
+            <md-option value="ABC">ABC News</md-option>
+            <md-option value="ALJ">Al Jazeera</md-option>
+            <md-option value="WSJ">Wall Street Journal</md-option>
+          </md-select>
+        </md-input-container>
+      </fieldset>
 
-      <md-input-container flex>
-        <label>News Source to Crawl</label>
-        <md-select ng-model="news">
-          <md-option value="CNN">CNN</md-option>
-          <md-option value="MSNBC">MSNBC</md-option>
-          <md-option value="ABC">ABC News</md-option>
-          <md-option value="ALJ">Al Jazeera</md-option>
-          <md-option value="WSJ">Wall Street Journal</md-option>
-        </md-select>
-      </md-input-container>
-    </md-content>
+    </div>
 
     <div flex >
       <md-button type="submit" ui-sref="core.power.results" class="md-raised md-primary">Submit</md-button>

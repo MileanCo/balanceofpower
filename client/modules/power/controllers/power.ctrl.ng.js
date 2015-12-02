@@ -11,6 +11,8 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
 
     $scope.loading = true;
     $scope.countries = [];
+    // List for Checkboxes of countries to use
+    $scope.countriesInvolved = [];
 
     // Subscriptions
     var subscription = $meteor.subscribe('countries');
@@ -18,6 +20,13 @@ angular.module('app.power') // TO-DO: ONLY ADD CHARTS.JS HERE & MODULARIZE
       $scope.countries = $meteor.collection(Countries);
       // Done loading when records processed
       $scope.loading=false;
+
+      // Make list for Checkboxes (ng-repeat)
+      for (var i = 0; i < $scope.countries.length; i++) {
+          var c = $scope.countries[i];
+          $scope.countriesInvolved.push({use:true, name: c.Faction});
+      }
+
     });
 
 
